@@ -2,7 +2,7 @@
 
 Este projeto foca em identificar e analisar os principais fatores que levam à evasão de clientes (Churn) no setor bancário. O objetivo é fornecer insights acionáveis e demonstrar a aplicação de técnicas de Ciência de Dados e visualização executiva para otimização de estratégias de retenção.
 
-![Dashboard de Evasão de Clientes]([NOME-DO-ARQUIVO-DA-SUA-IMAGEM.png])
+![Dashboard de Evasão de Clientes](dash.pdf)
 
 ## 📌 Contexto do Projeto
 A retenção de clientes é um dos maiores desafios estratégicos para instituições financeiras. Compreender o perfil do cliente bancário que cancela seus serviços permite que a equipe de negócios atue de forma preditiva. 
