@@ -25,5 +25,8 @@ Os principais padrões identificados foram:
 ## 💡 Conclusão
 A segmentação de clientes provou ser extremamente eficaz. A combinação da análise exploratória com a visualização de dados permite que a equipe de negócios priorize ações de retenção focadas exclusivamente na parcela de clientes com maior probabilidade de churn (Alto Risco). Isso otimiza o custo de aquisição de clientes (CAC) e aumenta significativamente o Lifetime Value (LTV) da base atual.
 
+## Link do Dataset
+![Dataset no Kaggle](https://www.kaggle.com/datasets/gauravtopre/bank-customer-churn-dataset)
+
 ---
 *Sinta-se à vontade para explorar os dados, o arquivo `.pbix` e os scripts em Python disponíveis neste repositório.*
