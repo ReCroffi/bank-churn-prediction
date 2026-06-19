@@ -1,32 +1,60 @@
 # Bank Churn Prediction & Analysis 📊🏦
 
-Este projeto foca em identificar e analisar os principais fatores que levam à evasão de clientes (Churn) no setor bancário. O objetivo é fornecer insights acionáveis e demonstrar a aplicação de técnicas de Ciência de Dados e visualização executiva para otimização de estratégias de retenção.
+Identificação dos principais fatores de evasão (churn) de clientes bancários,
+com um modelo preditivo e um dashboard executivo em Power BI para priorizar
+ações de retenção.
 
-![Dashboard de Evasão de Clientes](dash.pdf)
+![Dashboard de Evasão de Clientes](dashboard.png)
 
-## 📌 Contexto do Projeto
-A retenção de clientes é um dos maiores desafios estratégicos para instituições financeiras. Compreender o perfil do cliente bancário que cancela seus serviços permite que a equipe de negócios atue de forma preditiva. 
+## 📌 Contexto e pergunta de negócio
+Retenção é um dos maiores desafios de instituições financeiras. O objetivo é
+**prever quais clientes têm maior risco de sair** e entender **o que mais explica
+a evasão**, para que a equipe de negócio atue de forma proativa.
 
-Neste projeto, realizei a exploração de dados, a modelagem de previsão de churn e a construção de um dashboard interativo para monitorar as taxas de evasão com base em dados demográficos, comportamento financeiro, posse de produtos e classificação de risco.
+## 🧱 Pipeline
+1. **EDA** (`notebooks/01_eda.ipynb`) — perfil dos clientes e padrões de churn
+2. **Feature engineering** (`notebooks/02_feature_engineering.ipynb`) — variáveis de risco
+3. **Modelagem** (`notebooks/03_model.ipynb`) — treino, avaliação e threshold tuning
+4. **Dashboard** (`churn.pbix`) — KPIs executivos em Power BI
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
-* **Linguagem e Bibliotecas:** Python, Pandas (Limpeza, tratamento e modelagem preditiva)
-* **Visualização de Dados:** Power BI (Desenvolvimento de painel executivo e indicadores)
-* **Ambiente de Desenvolvimento:** Git, GitHub (Transição de scripts e versionamento entre ambientes Linux/Windows)
+## 📈 Principais achados
+Base de **2.000 clientes**, **393 evasões** (churn global de **19,65%**).
 
-## 📈 Principais Insights e Resultados
-A análise consolidada foi realizada sobre uma base de **2.000 clientes bancários**, resultando em um total de **393 evasões** (Taxa de Churn global de **19,65%**).
+- **Segmentação por risco é altamente preditiva:** grupo de **alto risco tem 53%
+  de churn** vs. **4%** no baixo risco.
+- **Atividade importa:** clientes inativos evadem muito mais.
+- **Idade e mix de produtos** revelam perfis específicos mais propensos ao cancelamento.
 
-Os principais padrões identificados foram:
-* **Eficácia da Segmentação por Risco:** Clientes classificados pelo modelo como "Alto Risco" apresentam uma taxa de churn alarmante de **53%**, enquanto clientes de "Baixo Risco" representam apenas **4%**. 
-* **Fator de Atividade:** O status de membro ativo (`active_member`) tem impacto direto na retenção. Clientes inativos ou com pouca movimentação evadem com muito mais frequência da instituição.
-* **Impacto Demográfico e de Produto:** A análise por grupo etário (`age_group`) e por grupo de produtos (`product_group`) demonstrou que há perfis específicos com maior propensão ao cancelamento, exigindo campanhas de relacionamento direcionadas.
+## 🤖 Modelo
+- **Algoritmos:** Random Forest e Logistic Regression
+- **ROC AUC: 0,84**
+- **Desafio honesto — classe desbalanceada:** recall da classe "churn" é baixo no
+  threshold padrão (0,5). Apliquei **threshold tuning** para trocar precisão por
+  recall conforme o custo de negócio (ex.: threshold 0,3 → recall ~0,64).
 
-## 💡 Conclusão
-A segmentação de clientes provou ser extremamente eficaz. A combinação da análise exploratória com a visualização de dados permite que a equipe de negócios priorize ações de retenção focadas exclusivamente na parcela de clientes com maior probabilidade de churn (Alto Risco). Isso otimiza o custo de aquisição de clientes (CAC) e aumenta significativamente o Lifetime Value (LTV) da base atual.
+> Em retenção, perder um cliente que ia evadir (falso negativo) costuma custar
+> mais que abordar um que ficaria — por isso priorizar **recall** faz sentido aqui.
 
-## Link do Dataset
-![Dataset no Kaggle](https://www.kaggle.com/datasets/gauravtopre/bank-customer-churn-dataset)
+## 🛠️ Stack
+Python · Pandas · scikit-learn · Power BI
 
----
-*Sinta-se à vontade para explorar os dados, o arquivo `.pbix` e os scripts em Python disponíveis neste repositório.*
+## ▶️ Como rodar
+```bash
+git clone git@github.com:ReCroffi/bank-churn-prediction.git
+cd bank-churn-prediction
+pip install -r requirements.txt        # se não houver, instale pandas scikit-learn jupyter
+jupyter notebook notebooks/01_eda.ipynb
+# Dashboard: abra churn.pbix no Power BI Desktop
+```
+
+## 🗂️ Estrutura
+```
+bank-churn-prediction/
+├── notebooks/   # 01_eda, 02_feature_engineering, 03_model
+├── data/        # raw e processed
+├── churn.pbix   # dashboard Power BI
+└── dashboard.png
+```
+
+## 🔗 Dataset
+[Bank Customer Churn — Kaggle](https://www.kaggle.com/datasets/gauravtopre/bank-customer-churn-dataset)
